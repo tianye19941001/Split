@@ -13,8 +13,7 @@
 			box-sizing: border-box;
 		}
 		img{ display: block; }
-		#split_con{
-
+		.split_con{
 			width: 730px;
 			height: 300px;
 			position: relative;
@@ -22,44 +21,17 @@
 	</style>
 </head>
 <body>
-	<div class="split_con" id="split_con">
-		<img src="http://newimg88.b0.upaiyun.com/newimg88/2017/03/100offer-post-bottom.png" alt="">
+	<div class="split_con">
+		<img  id="split_con" src="http://newimg88.b0.upaiyun.com/newimg88/2017/03/100offer-post-bottom.png" alt="">
 	</div>
 	<script src="./src/js/jquery.min.js" type="text/javascript"></script>
-	<script>
-		var youChoose = {
-			WNumber: 10,
-			HNumber: 5,
-			TId: '#split_con'
-		}
-		var weGet = {
-			imgurl: $(youChoose.TId+' img').attr("src"),
-			EleWidth: $(youChoose.TId).width(),
-			EleHeight: $(youChoose.TId).height(),
-			everyW: $(youChoose.TId).width() / youChoose.WNumber * -1,
-			everyH: $(youChoose.TId).height() / youChoose.HNumber * -1
-		}
-		for (var i = 0; i < youChoose.WNumber * youChoose.HNumber; i++) {
-			var newI = $('<i></i>');
-
-			console.log(weGet)
-			newI.css({
-				"display": "block",
-				"width": 100 / youChoose.WNumber + '%',
-				"height": 100 / youChoose.HNumber + '%',
-				"background-image": "url(" + weGet.imgurl + ")",
-				"background-size": weGet.EleWidth + "px " + weGet.EleHeight + "px ",
-				"background-position": i % youChoose.WNumber * weGet.everyW + "px " + Math.floor(i / youChoose.WNumber) * weGet.everyH  + "px",
-				"position": "absolute",
-				"top": Math.floor(i / youChoose.WNumber) * weGet.everyH * -1 + "px" ,
-				"left": i % youChoose.WNumber * weGet.everyW * -1 + "px "
-			})
-			$(youChoose.TId).append(newI)
-		}
-
-	</script>
-
 	<script src="./src/js/split.js" type="text/javascript"></script>
-	
+	<script>
+		var newSplit = new SplitJS({
+			container    : 'split_con',
+			withNumber   : 10,
+			heightNumber : 5
+		})
+	</script>
 </body>
 </html>
